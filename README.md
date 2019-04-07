@@ -14,4 +14,4 @@ Click [here](https://github.com/subgap/SubGap/blob/master/COMMANDS.md)
 
 # Our Hosting Sponsor: SparkedHost
 # Use code 'subgap' to get 5% off on all all shared hosting (Discord Bots, Minecraft and Web Hosting)
-![SparkedHost](https://i.imgur.com/Tunghh2.png)
+[![SparkedHost](https://i.imgur.com/Tunghh2.png)](https://www.sparkedhost.us/)

@@ -4,19 +4,20 @@ import me.kavin.subgap.Main;
 import me.kavin.subgap.command.Command;
 import me.kavin.subgap.command.CommandExecutor;
 import me.kavin.subgap.command.CommandManager;
+import me.kavin.subgap.consts.Constants;
 import me.kavin.subgap.utils.FirebaseUtils;
 import me.kavin.subgap.utils.Multithreading;
 import me.kavin.subgap.utils.SubscribersUtil;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.Game.GameType;
 import net.dv8tion.jda.core.events.ReadyEvent;
+import net.dv8tion.jda.core.events.channel.text.TextChannelCreateEvent;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
-import net.dv8tion.jda.core.events.guild.update.GuildUpdateOwnerEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class DiscordListener extends ListenerAdapter {
@@ -45,9 +46,13 @@ public class DiscordListener extends ListenerAdapter {
 	}
 
 	@Override
-	public void onGuildUpdateOwner(GuildUpdateOwnerEvent event) {
-		event.getGuild().getOwner().getUser().openPrivateChannel().complete()
-				.sendMessage("Congrats on becoming the new owner of `" + event.getGuild().getName() + "`!").complete();
+	public void onTextChannelCreate(TextChannelCreateEvent event) {
+		if (event.getChannel().getName().equalsIgnoreCase("Sub-Gap")) {
+			EmbedBuilder meb = new EmbedBuilder();
+			meb.setColor(Constants.NO_COLOR_EMBED);
+			meb.setDescription(
+					"You have created a sub-gap channel! I will periodically post automated updates about the subscriber war!");
+		}
 	}
 
 	@Override
@@ -68,11 +73,5 @@ public class DiscordListener extends ListenerAdapter {
 						Multithreading.runAsync(new CommandExecutor(cmd, event));
 		}
 
-	}
-
-	@Override
-	public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
-		if (event.getAuthor() != Main.api.getSelfUser() && event.getMessage().getContentRaw().startsWith(">"))
-			event.getMessage().getChannel().sendMessage("Error: I don't reply to PM's!").complete();
 	}
 }

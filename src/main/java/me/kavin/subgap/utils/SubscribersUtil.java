@@ -85,6 +85,9 @@ public class SubscribersUtil {
 			}
 		}, TimeUnit.SECONDS.toMillis(10), TimeUnit.MINUTES.toMillis(2));
 
+		long time = System.currentTimeMillis();
+		long delay = time - time - (time % TimeUnit.HOURS.toMillis(1)) + TimeUnit.HOURS.toMillis(1);
+
 		new Timer().scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
@@ -123,7 +126,7 @@ public class SubscribersUtil {
 					} catch (Exception e) {
 					}
 			}
-		}, TimeUnit.SECONDS.toMillis(10), TimeUnit.HOURS.toMillis(1));
+		}, delay, TimeUnit.HOURS.toMillis(1));
 	}
 
 	public static ObjectArrayList<Channel> getChannels() {

@@ -4,9 +4,9 @@ import me.kavin.subgap.command.Command;
 import me.kavin.subgap.command.CommandManager;
 import me.kavin.subgap.consts.Constants;
 import me.kavin.subgap.consts.Emojis;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.PrivateChannel;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.PrivateChannel;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class Help extends Command {
 	public Help() {

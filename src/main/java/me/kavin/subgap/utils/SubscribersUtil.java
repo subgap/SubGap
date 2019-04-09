@@ -14,8 +14,8 @@ import kong.unirest.Unirest;
 import me.kavin.subgap.Main;
 import me.kavin.subgap.consts.Constants;
 import me.kavin.subgap.consts.Emojis;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.TextChannel;
 
 public class SubscribersUtil {
 

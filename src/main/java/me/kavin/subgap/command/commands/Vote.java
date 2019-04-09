@@ -5,8 +5,8 @@ import me.kavin.subgap.command.Command;
 import me.kavin.subgap.consts.Constants;
 import me.kavin.subgap.utils.FirebaseUtils;
 import me.kavin.subgap.utils.SubscribersUtil;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class Vote extends Command {
 

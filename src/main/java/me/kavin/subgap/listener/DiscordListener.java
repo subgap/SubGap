@@ -8,17 +8,17 @@ import me.kavin.subgap.consts.Constants;
 import me.kavin.subgap.utils.FirebaseUtils;
 import me.kavin.subgap.utils.Multithreading;
 import me.kavin.subgap.utils.SubscribersUtil;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.entities.ChannelType;
-import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.entities.Game.GameType;
-import net.dv8tion.jda.core.events.ReadyEvent;
-import net.dv8tion.jda.core.events.channel.text.TextChannelCreateEvent;
-import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
-import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Activity.ActivityType;
+import net.dv8tion.jda.api.entities.ChannelType;
+import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.channel.text.TextChannelCreateEvent;
+import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
+import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class DiscordListener extends ListenerAdapter {
 
@@ -27,8 +27,8 @@ public class DiscordListener extends ListenerAdapter {
 	}
 
 	private void setPresence() {
-		Main.api.getPresence().setGame(
-				Game.of(GameType.WATCHING, " the sub gap! | >help | " + Main.api.getGuilds().size() + " Servers!"));
+		Main.api.getPresence().setActivity(Activity.of(ActivityType.WATCHING,
+				"the sub gap! | >help | " + Main.api.getGuilds().size() + " Servers!"));
 	}
 
 	@Override

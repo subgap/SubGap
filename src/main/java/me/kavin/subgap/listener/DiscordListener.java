@@ -52,6 +52,7 @@ public class DiscordListener extends ListenerAdapter {
 			meb.setColor(Constants.NO_COLOR_EMBED);
 			meb.setDescription(
 					"You have created a sub-gap channel! I will periodically post automated updates about the subscriber war!");
+			event.getChannel().sendMessage(meb.build()).queue();
 		}
 	}
 

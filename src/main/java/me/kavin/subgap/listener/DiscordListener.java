@@ -1,6 +1,9 @@
 package me.kavin.subgap.listener;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import me.kavin.subgap.Main;
+import me.kavin.subgap.botlist.BotListPoster;
+import me.kavin.subgap.botlist.DiscordBotsPostTask;
 import me.kavin.subgap.command.Command;
 import me.kavin.subgap.command.CommandExecutor;
 import me.kavin.subgap.command.CommandManager;
@@ -38,6 +41,12 @@ public class DiscordListener extends ListenerAdapter {
 		SubscribersUtil.initialise();
 		FirebaseUtils.initialise();
 		new CommandManager();
+
+		{
+			ObjectArrayList<Runnable> tasks = new ObjectArrayList<>();
+			tasks.add(new DiscordBotsPostTask());
+			new BotListPoster(tasks).initialize();
+		}
 	}
 
 	@Override

@@ -21,6 +21,7 @@ public class Constants {
 		BOT_TOKEN = prop.getProperty("BOT_TOKEN");
 		GOOGLE_API_KEY = prop.getProperty("GOOGLE_API_KEY");
 		FIREBASE_CREDENTIALS_URL = prop.getProperty("FIREBASE_CREDENTIALS_URL");
+		DBL_TOKEN = prop.getProperty("DBL_TOKEN");
 	}
 
 	public static final String BOT_TOKEN;
@@ -29,10 +30,13 @@ public class Constants {
 
 	public static final String FIREBASE_CREDENTIALS_URL;
 
+	public static final String DBL_TOKEN;
+
 	public static final Color NO_COLOR_EMBED = new Color(54, 57, 63);
 
 	public static final DecimalFormat df = new DecimalFormat("#,###");
 
-	public static final EmbedBuilder AD_EMBED = new EmbedBuilder(Constants.AD_EMBED).setFooter("Powered by sparkedhost.us",
+	public static final EmbedBuilder AD_EMBED = new EmbedBuilder(Constants.AD_EMBED).setFooter(
+			"Powered by sparkedhost.us",
 			"https://cdn.discordapp.com/icons/392881838605205504/40ca03d4e1a1f066ad7a68e9af516cd9.png");
 }

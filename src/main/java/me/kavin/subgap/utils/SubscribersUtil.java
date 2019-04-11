@@ -54,7 +54,7 @@ public class SubscribersUtil {
 					}
 				});
 				if (channels.get(0).getSubscribers() - channels.get(1).getSubscribers() <= 15000) {
-					EmbedBuilder meb = new EmbedBuilder();
+					EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 					meb.setTitle("Sub Gap: LOW SUB GAP");
 					meb.setColor(Constants.NO_COLOR_EMBED);
 
@@ -98,7 +98,7 @@ public class SubscribersUtil {
 						return o2.getSubscribers() - o1.getSubscribers();
 					}
 				});
-				EmbedBuilder meb = new EmbedBuilder();
+				EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 				meb.setTitle("Sub Gap: Hourly Update");
 				meb.setColor(Constants.NO_COLOR_EMBED);
 

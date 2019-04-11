@@ -16,7 +16,7 @@ public class Help extends Command {
 	@Override
 	public void onCommand(String message, MessageReceivedEvent event) throws Throwable {
 		{
-			EmbedBuilder meb = new EmbedBuilder();
+			EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 			meb.setColor(Constants.NO_COLOR_EMBED);
 			meb.setTitle("Sub Gap's Commands:");
 			meb.setDescription("Help sent! Check DMs! " + Emojis.WHITE_CHECK_MARK
@@ -24,7 +24,7 @@ public class Help extends Command {
 			event.getChannel().sendMessage(meb.build()).complete();
 		}
 		{
-			EmbedBuilder meb = new EmbedBuilder();
+			EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 			meb.setColor(Constants.NO_COLOR_EMBED);
 			meb.setTitle("Sub Gap's Commands:");
 			PrivateChannel pc = event.getAuthor().openPrivateChannel().submit().get();

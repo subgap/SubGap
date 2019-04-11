@@ -19,7 +19,7 @@ public class CommandExecutor implements Runnable {
 		try {
 			cmd.onCommand(event.getMessage().getContentRaw(), event);
 		} catch (Throwable t) {
-			EmbedBuilder meb = new EmbedBuilder();
+			EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 			meb.setColor(Constants.NO_COLOR_EMBED);
 			meb.setDescription("An error occoured while executing the command!");
 			event.getChannel().sendMessage(meb.build());

@@ -48,7 +48,7 @@ public class DiscordListener extends ListenerAdapter {
 	@Override
 	public void onTextChannelCreate(TextChannelCreateEvent event) {
 		if (event.getChannel().getName().equalsIgnoreCase("Sub-Gap")) {
-			EmbedBuilder meb = new EmbedBuilder();
+			EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 			meb.setColor(Constants.NO_COLOR_EMBED);
 			meb.setDescription(
 					"You have created a sub-gap channel! I will periodically post automated updates about the subscriber war!");

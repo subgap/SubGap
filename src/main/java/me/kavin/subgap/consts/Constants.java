@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Properties;
 
+import net.dv8tion.jda.api.EmbedBuilder;
+
 public class Constants {
 
 	static {
@@ -30,4 +32,7 @@ public class Constants {
 	public static final Color NO_COLOR_EMBED = new Color(54, 57, 63);
 
 	public static final DecimalFormat df = new DecimalFormat("#,###");
+
+	public static final EmbedBuilder AD_EMBED = new EmbedBuilder(Constants.AD_EMBED).setFooter("Powered by sparkedhost.us",
+			"https://cdn.discordapp.com/icons/392881838605205504/40ca03d4e1a1f066ad7a68e9af516cd9.png");
 }

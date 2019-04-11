@@ -21,7 +21,7 @@ public class Votes extends Command {
 	@Override
 	public void onCommand(String string, MessageReceivedEvent event) throws Throwable {
 		{
-			EmbedBuilder meb = new EmbedBuilder();
+			EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 			meb.setTitle("Sub Gap: Command");
 			meb.setColor(Constants.NO_COLOR_EMBED);
 			ObjectArrayList<Channel> channels = SubscribersUtil.getChannels();

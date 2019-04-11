@@ -29,7 +29,7 @@ public class Vote extends Command {
 				}
 			if (chosen == null) {
 				{
-					EmbedBuilder meb = new EmbedBuilder();
+					EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 					meb.setColor(Constants.NO_COLOR_EMBED);
 					meb.setTitle("Vote: ");
 					StringBuilder sb = new StringBuilder("Please choose one of the choice as your argument: ");
@@ -43,14 +43,14 @@ public class Vote extends Command {
 					FirebaseUtils.addVote(chosen);
 					FirebaseUtils.setVoted(id);
 					{
-						EmbedBuilder meb = new EmbedBuilder();
+						EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 						meb.setColor(Constants.NO_COLOR_EMBED);
 						meb.setTitle("Vote: ");
 						meb.setDescription("Voted for " + chosen);
 						event.getChannel().sendMessage(meb.build()).queue();
 					}
 				} else {
-					EmbedBuilder meb = new EmbedBuilder();
+					EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 					meb.setColor(Constants.NO_COLOR_EMBED);
 					meb.setTitle("Vote: ");
 					// TODO: Allow voting again if they vote for the bot.
@@ -59,7 +59,7 @@ public class Vote extends Command {
 				}
 			}
 		} else {
-			EmbedBuilder meb = new EmbedBuilder();
+			EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 			meb.setColor(Constants.NO_COLOR_EMBED);
 			meb.setTitle("Vote: ");
 			StringBuilder sb = new StringBuilder("Please choose one of the choice as your argument: ");

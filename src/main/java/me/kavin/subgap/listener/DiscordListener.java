@@ -8,6 +8,7 @@ import me.kavin.subgap.command.Command;
 import me.kavin.subgap.command.CommandExecutor;
 import me.kavin.subgap.command.CommandManager;
 import me.kavin.subgap.consts.Constants;
+import me.kavin.subgap.threads.WebServer;
 import me.kavin.subgap.utils.FirebaseUtils;
 import me.kavin.subgap.utils.Multithreading;
 import me.kavin.subgap.utils.SubscribersUtil;
@@ -41,7 +42,7 @@ public class DiscordListener extends ListenerAdapter {
 		SubscribersUtil.initialise();
 		FirebaseUtils.initialise();
 		new CommandManager();
-
+		new WebServer(Constants.WEBHOOK_PORT).start();
 		{
 			ObjectArrayList<Runnable> tasks = new ObjectArrayList<>();
 			tasks.add(new DiscordBotsPostTask());

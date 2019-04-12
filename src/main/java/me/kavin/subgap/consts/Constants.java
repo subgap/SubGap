@@ -22,6 +22,8 @@ public class Constants {
 		GOOGLE_API_KEY = prop.getProperty("GOOGLE_API_KEY");
 		FIREBASE_CREDENTIALS_URL = prop.getProperty("FIREBASE_CREDENTIALS_URL");
 		DBL_TOKEN = prop.getProperty("DBL_TOKEN");
+		DBL_SECRET = prop.getProperty("DBL_SECRET");
+		WEBHOOK_PORT = Integer.parseInt(prop.getProperty("WEBHOOK_PORT"));
 	}
 
 	public static final String BOT_TOKEN;
@@ -31,6 +33,10 @@ public class Constants {
 	public static final String FIREBASE_CREDENTIALS_URL;
 
 	public static final String DBL_TOKEN;
+
+	public static final String DBL_SECRET;
+
+	public static final int WEBHOOK_PORT;
 
 	public static final Color NO_COLOR_EMBED = new Color(54, 57, 63);
 

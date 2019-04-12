@@ -28,6 +28,7 @@ public class FirebaseUtils {
 
 			db = options.getService();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -37,6 +38,18 @@ public class FirebaseUtils {
 		} else {
 			return votes.put(channel, db.collection("bot").document("votes").get().get().getLong(channel).intValue());
 		}
+	}
+
+	public static void addVote(long id) throws InterruptedException, ExecutionException {
+		DocumentSnapshot snapshot = db.collection("bot").document("lastVoted").get().get();
+		if (snapshot.contains(String.valueOf(id))) {
+			String channel = snapshot.getString(String.valueOf(id));
+			addVote(channel);
+		}
+	}
+
+	public static void setVoted(long id, String channel) throws InterruptedException, ExecutionException {
+		db.collection("bot").document("lastVoted").update(String.valueOf(id), channel);
 	}
 
 	public static void addVote(String channel) throws InterruptedException, ExecutionException {

@@ -1,6 +1,10 @@
 package me.kavin.subgap.command.commands;
 
+import com.jsoniter.JsonIterator;
+
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import kong.unirest.Unirest;
+import me.kavin.subgap.Main;
 import me.kavin.subgap.command.Command;
 import me.kavin.subgap.consts.Constants;
 import me.kavin.subgap.utils.FirebaseUtils;
@@ -39,22 +43,34 @@ public class Vote extends Command {
 					event.getChannel().sendMessage(meb.build()).queue();
 				}
 			} else {
+				boolean voted = JsonIterator.deserialize(Unirest
+						.get("https://discordbots.org/api/bots/" + Main.api.getSelfUser().getIdLong() + "/check?userId="
+								+ event.getMember().getUser().getIdLong())
+						.header("Authorization", Constants.DBL_TOKEN).asString().getBody()).toBoolean("voted");
 				if (FirebaseUtils.canVote(id)) {
 					FirebaseUtils.addVote(chosen);
 					FirebaseUtils.setVoted(id);
+					FirebaseUtils.setVoted(id, chosen);
 					{
 						EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 						meb.setColor(Constants.NO_COLOR_EMBED);
 						meb.setTitle("Vote: ");
-						meb.setDescription("Voted for " + chosen);
+						String msg = "Voted for " + chosen;
+						if (!voted)
+							msg += "\nYou can vote again by voting for the bot [here](https://discordbots.org/bot/"
+									+ Main.api.getSelfUser().getId() + "/vote)";
+						meb.setDescription(msg);
 						event.getChannel().sendMessage(meb.build()).queue();
 					}
 				} else {
 					EmbedBuilder meb = new EmbedBuilder(Constants.AD_EMBED);
 					meb.setColor(Constants.NO_COLOR_EMBED);
 					meb.setTitle("Vote: ");
-					// TODO: Allow voting again if they vote for the bot.
-					meb.setDescription("You cannot vote! You have already voted in the past 24 hours!");
+					String msg = "You cannot vote! You have already voted in the past 24 hours!";
+					if (!voted)
+						msg += "\nYou can vote again by voting for the bot [here](https://discordbots.org/bot/"
+								+ Main.api.getSelfUser().getId() + "/vote)";
+					meb.setDescription(msg);
 					event.getChannel().sendMessage(meb.build()).queue();
 				}
 			}

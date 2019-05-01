@@ -6,6 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.jsoniter.JsonIterator;
 import com.jsoniter.any.Any;
 
@@ -15,7 +17,9 @@ import me.kavin.subgap.Main;
 import me.kavin.subgap.consts.Constants;
 import me.kavin.subgap.consts.Emojis;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Category;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.VoiceChannel;
 
 public class SubscribersUtil {
 
@@ -81,6 +85,45 @@ public class SubscribersUtil {
 							channel.sendMessage(meb.build()).queue();
 						} catch (Exception e) {
 						}
+				}
+			}
+		}, TimeUnit.SECONDS.toMillis(10), TimeUnit.MINUTES.toMillis(2));
+
+		new Timer().scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				ObjectArrayList<Channel> channels = SubscribersUtil.getChannels();
+				Collections.sort(channels, new Comparator<Channel>() {
+					@Override
+					public int compare(Channel o1, Channel o2) {
+						return o2.getSubscribers() - o1.getSubscribers();
+					}
+				});
+				for (Category c : Main.api.getCategories()) {
+					if (c.getName().equalsIgnoreCase("Sub-Gap-Stats")) {
+						for (VoiceChannel vc : c.getVoiceChannels()) {
+							for (Channel channel : channels)
+								if (vc.getName().equalsIgnoreCase(channel.getName())
+										|| StringUtils.startsWithIgnoreCase(vc.getName(), channel.getName()))
+									try {
+										vc.getManager()
+												.setName(channel.getName() + ": " + channel.getSubscribersDisplay())
+												.queue();
+									} catch (Exception e) {
+										// ignored
+									}
+							if (vc.getName().equalsIgnoreCase("Sub-Gap")
+									|| StringUtils.startsWithIgnoreCase(vc.getName(), "Sub-Gap"))
+								try {
+									vc.getManager().setName("Sub-Gap: " + Constants.df.format(
+											channels.get(0).getSubscribers() - channels.get(1).getSubscribers()))
+											.queue();
+								} catch (Exception e) {
+									// ignored
+								}
+						}
+
+					}
 				}
 			}
 		}, TimeUnit.SECONDS.toMillis(10), TimeUnit.MINUTES.toMillis(2));

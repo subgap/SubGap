@@ -8,7 +8,7 @@ Click [here](https://github.com/subgap/SubGap/blob/master/COMMANDS.md)
 
 # You can also get automated live subgap updates by creating a channel called 'sub-gap'
 
-# You can invite me by clicking [here](https://discordapp.com/oauth2/authorize?client_id=564136665778749441&permissions=18432&scope=bot)
+# You can invite me by clicking [here](https://discordapp.com/oauth2/authorize?client_id=564136665778749441&permissions=18448&scope=bot)
 
 # Feature requests can be made [here](https://github.com/subgap/SubGap/issues)
 

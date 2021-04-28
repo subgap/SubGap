@@ -1,0 +1,32 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: net.dv8tion:JDA
+    versions:
+    - 4.2.0_227
+    - 4.2.0_228
+    - 4.2.0_229
+    - 4.2.0_230
+    - 4.2.0_231
+    - 4.2.0_236
+    - 4.2.0_239
+    - 4.2.0_240
+    - 4.2.0_241
+    - 4.2.0_242
+    - 4.2.0_245
+  - dependency-name: it.unimi.dsi:fastutil
+    versions:
+    - 8.4.4
+    - 8.5.1
+    - 8.5.2
+  - dependency-name: com.konghq:unirest-java
+    versions:
+    - 3.11.10
+  - dependency-name: com.google.firebase:firebase-admin
+    versions:
+    - 7.1.0
